@@ -417,6 +417,7 @@ public class MyBatisGenerateCommand {
 	private CommentGeneratorConfiguration buildCommentConfig() {
 		CommentGeneratorConfiguration commentConfig = new CommentGeneratorConfiguration();
 		if (tableConfig.isComment()) {
+			commentConfig.addProperty(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE, "true");
 			commentConfig.addProperty(PropertyRegistry.COMMENT_GENERATOR_ADD_REMARK_COMMENTS, "true");
 			commentConfig.addProperty(PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT, "yyyy-MM-dd HH:mm:ss");
 		}
