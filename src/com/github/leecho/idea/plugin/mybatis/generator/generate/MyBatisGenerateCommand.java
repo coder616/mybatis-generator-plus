@@ -114,7 +114,12 @@ public class MyBatisGenerateCommand {
 		createFolderForNeed(this.tableConfig);
 		List<String> warnings = new ArrayList<>();
 		// override=true
-		ShellCallback shellCallback= new DefaultShellCallback(this.tableConfig.isOverride());
+		ShellCallback shellCallback;
+		if (this.tableConfig.isOverride()) {
+			shellCallback = new DefaultShellCallback(true);
+		} else {
+			shellCallback = new MergeableShellCallback(true);
+		}
 		Set<String> fullyQualifiedTables = new HashSet<>();
 		Set<String> contexts = new HashSet<>();
 
